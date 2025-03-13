@@ -289,7 +289,7 @@ body #nav-music {
 #heoMusic-page .aplayer-info .aplayer-controller .aplayer-bar-wrap {
   margin: 0 160px 0 150px;
   margin: 0 0 0 0;      /* 清空原有边距 */
-  width: 60%;           /* 设置为父容器的 75% */
+  width: 55%;           /* 设置为父容器的 55% */
   position: relative;
   left: 0;              /* 强制左对齐 */
   flex: none;           /* 禁用 flex 自动伸缩 */
@@ -835,7 +835,7 @@ body .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon.apla
 }
 #heoMusic-page .aplayer-time {
   position: absolute !important;
-  right: 340px;
+  right: 300px;
   top: 50%;
   transform: translateY(-50%);
   height: 10px;
@@ -868,5 +868,65 @@ body .aplayer .aplayer-info .aplayer-controller .aplayer-time .aplayer-icon.apla
   #heoMusic-page .aplayer-bar {
     height: 6px !important;
     margin: 11px 0;
+  }
+}
+/* 修改歌词容器样式 */
+#heoMusic-page .aplayer-info .aplayer-lrc {
+  height: auto !important; /* 移除固定高度 */
+  max-height: calc(100dvh - 200px); /* 保留最大高度 */
+  overflow-y: auto; /* 保持滚动 */
+  mask-image: none !important; /* 移除遮罩效果 */
+  -webkit-mask-image: none !important;
+  transition: all 0.3s ease; /* 添加展开动画 */
+}
+
+/* 添加展开按钮样式 */
+.lrc-expand-toggle {
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  z-index: 1000;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 展开状态 */
+.lrc-expanded {
+  max-height: 1000px !important; /* 足够大的高度值 */
+}
+
+/* 歌词文本调整 */
+#heoMusic-page .aplayer-info .aplayer-lrc p {
+  font-size: 17px; /* 调大字体 */
+  line-height: 3;
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+/* 当前播放歌词样式 */
+#heoMusic-page .aplayer-info .aplayer-lrc p.aplayer-lrc-current {
+  font-size: 20px;
+  opacity: 1;
+  filter: none;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .lrc-expand-toggle {
+    right: 10px;
+    bottom: 5px;
+    width: 25px;
+    height: 25px;
+  }
+  
+  #heoMusic-page .aplayer-info .aplayer-lrc p {
+    font-size: 20px;
   }
 }
